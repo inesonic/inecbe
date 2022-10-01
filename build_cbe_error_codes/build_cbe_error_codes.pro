@@ -21,17 +21,38 @@
 #   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ########################################################################################################################
 
-LLVM_BASE=/opt/llvm-14.0.0
-LLVM_VERSION=140000
+########################################################################################################################
+# Basic build characteristics
+#
 
-!defined(LLVM_INSTALL, var) {
-    !defined(LLVM_INCLUDE, var) || !defined(LLVM_LIBDIR, var) {
-        error("Missing define: LLVM_INSTALL")
-    }
-}
+TEMPLATE = app
+QT += core
+CONFIG += c++14
 
-exists("$${LLVM_INSTALL}/share/targets.inc") {
-    include("$${LLVM_INSTALL}/share/targets.inc")
+SOURCES = build_cbe_error_codes.cpp
+
+HEADERS = warnings.h
+
+win32:QMAKE_CXXFLAGS += -bigobj
+
+########################################################################################################################
+# Libraries
+#
+
+include("../third_party/llvm_headers_only.pri")
+
+########################################################################################################################
+# Locate build intermediate and output products
+#
+
+TARGET = build_cbe_error_codes
+
+CONFIG(debug, debug|release) {
+    unix:DESTDIR = build/debug
+    win32:DESTDIR = build/Debug
 } else {
-    LLVM_TARGETS=X86
+    unix:DESTDIR = build/release
+    win32:DESTDIR = build/Release
 }
+
+OBJECTS_DIR = $${DESTDIR}/objects
