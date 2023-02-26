@@ -34,7 +34,7 @@ unix {
 
     INCLUDEPATH += $${LLVM_INCLUDE}
 
-    !defined(LLVM_PRIVATE_INCLUDE,var) {
+    defined(LLVM_PRIVATE_INCLUDE,var) {
         INCLUDEPATH += $${LLVM_PRIVATE_INCLUDE}
     }
 }
@@ -50,7 +50,7 @@ win32 {
 
     INCLUDEPATH += $${LLVM_INCLUDE}
 
-    !defined(LLVM_PRIVATE_INCLUDE,var) {
+    defined(LLVM_PRIVATE_INCLUDE,var) {
         INCLUDEPATH += $${LLVM_PRIVATE_INCLUDE}
     }
 }

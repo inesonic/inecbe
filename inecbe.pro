@@ -22,6 +22,7 @@
 ########################################################################################################################
 
 TEMPLATE = subdirs
-SUBDIRS = inecbe test
+SUBDIRS = inecbe build_cbe_error_codes test
 
+inecbe.depends = build_cbe_error_codes
 test.depends = inecbe

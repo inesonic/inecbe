@@ -161,19 +161,35 @@ HEADERS = $$API_HEADERS $$PRIVATE_HEADERS
 include("../third_party/llvm.pri")
 
 ########################################################################################################################
-# Optional: Build error code table as a final step.
+# Build error code table as a final step.
 #
 
-exists($${LLVM_TOOLS}/build_cbe_error_codes}) {
+BUILD_CBE_ERROR_CODES_ROOT=$$shadowed($$PWD)/../build_cbe_error_codes/
+
+CONFIG(debug, debug|release) {
     unix {
-        BUILD_CBE_ERROR_CODES = /opt/inesonic/build_cbe_error_codes
-        QMAKE_POST_LINK = mkdir -p include ; $${BUILD_CBE_ERROR_CODES} include/cbe_cpp_compiler_error_codes.h
+        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/debug/build_cbe_error_codes
     }
 
     win32 {
-        BUILD_CBE_ERROR_CODES = build_cbe_error_codes.exe
-        QMAKE_POST_LINK = MKDIR include & $${BUILD_CBE_ERROR_CODES} include/cbe_cpp_compiler_error_codes.h
+        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/Debug/build_cbe_error_codes
     }
+} else {
+    unix {
+        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/release/build_cbe_error_codes
+    }
+
+    win32 {
+        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/Release/build_cbe_error_codes
+    }
+}
+
+unix {
+    QMAKE_POST_LINK = mkdir -p include ; $${BUILD_CBE_ERROR_CODES} include/cbe_cpp_compiler_error_codes.h
+}
+
+win32 {
+    QMAKE_POST_LINK = MKDIR "include" && $${BUILD_CBE_ERROR_CODES} include/cbe_cpp_compiler_error_codes.h
 }
 
 ########################################################################################################################

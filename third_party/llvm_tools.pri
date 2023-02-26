@@ -21,8 +21,9 @@
 #   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ########################################################################################################################
 
-LLVM_BASE=/opt/llvm-14.0.0
-LLVM_VERSION=140000
+defined(SETTINGS_PRI, var) {
+    include($${SETTINGS_PRI})
+}
 
 !defined(LLVM_INSTALL, var) {
     !defined(LLVM_INCLUDE, var) || !defined(LLVM_LIBDIR, var) {
