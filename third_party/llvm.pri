@@ -354,4 +354,6 @@ win32 {
 #        LIBS += $${LLVM_LIBDIR}/lldYAML.lib
         LIBS += $${LLVM_LIBDIR}/lldCOFF.lib
     }
+
+    LIBS += $${WINDOWS_KIT_LIBDIR}/Version.lib
 }

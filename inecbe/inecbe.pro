@@ -179,7 +179,7 @@ CONFIG(debug, debug|release) {
     }
 
     win32 {
-        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/Debug/build_cbe_error_codes
+        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/Debug/build_cbe_error_codes.exe
     }
 } else {
     unix {
@@ -194,7 +194,7 @@ CONFIG(debug, debug|release) {
     }
 
     win32 {
-        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/Release/build_cbe_error_codes
+        BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_ROOT}/build/Release/build_cbe_error_codes.exe
     }
 }
 
@@ -203,7 +203,7 @@ unix {
 }
 
 win32 {
-    QMAKE_POST_LINK = MKDIR "include" && $${BUILD_CBE_ERROR_CODES} include/cbe_cpp_compiler_error_codes.h
+    QMAKE_POST_LINK = MKDIR "include" & $${BUILD_CBE_ERROR_CODES} include/cbe_cpp_compiler_error_codes.h
 }
 
 ########################################################################################################################

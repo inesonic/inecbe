@@ -98,6 +98,18 @@ include("../third_party/llvm.pri")
 INCLUDEPATH += $${BOOST_INCLUDE}
 
 ########################################################################################################################
+# Operating System:
+#
+
+win32 {
+    defined(SETTINGS_PRI, var) {
+        include($${SETTINGS_PRI})
+    }
+
+    LIBS += "$${WINDOWS_KIT_LIBDIR}/Psapi.Lib"
+}
+
+########################################################################################################################
 # Locate build intermediate and output products
 #
 
