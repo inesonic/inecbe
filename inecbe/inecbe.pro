@@ -172,7 +172,7 @@ CONFIG(debug, debug|release) {
             BUILD_CBE_ERROR_CODES_DIR= \
                 $${BUILD_CBE_ERROR_CODES_ROOT}/build/debug/build_cbe_error_codes.app/Contents/MacOS/
         } else {
-            BUILD_CBE_ERROR_CODES_DIR=$${BUILD_CBE_ERROR_CODES_ROOT}/build/debug/build_cbe_error_codes
+            BUILD_CBE_ERROR_CODES_DIR=$${BUILD_CBE_ERROR_CODES_ROOT}/build/debug/
         }
 
         BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_DIR}/build_cbe_error_codes
@@ -187,7 +187,7 @@ CONFIG(debug, debug|release) {
             BUILD_CBE_ERROR_CODES_DIR= \
                 $${BUILD_CBE_ERROR_CODES_ROOT}/build/release/build_cbe_error_codes.app/Contents/MacOS/
         } else {
-            BUILD_CBE_ERROR_CODES_DIR=$${BUILD_CBE_ERROR_CODES_ROOT}/build/release/build_cbe_error_codes
+            BUILD_CBE_ERROR_CODES_DIR=$${BUILD_CBE_ERROR_CODES_ROOT}/build/release/
         }
 
         BUILD_CBE_ERROR_CODES=$${BUILD_CBE_ERROR_CODES_DIR}/build_cbe_error_codes
